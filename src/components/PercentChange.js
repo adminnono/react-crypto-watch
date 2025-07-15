@@ -1,6 +1,6 @@
 import React from "react";
 
-const PercentChange = () => {
+const PercentChange = ({ percent }) => {
   return <div></div>;
 };
 
