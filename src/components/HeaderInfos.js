@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import PercentChange from "./PercentChange";
+import TableFilters from "./TableFilters";
 
 const HeaderInfos = () => {
   const [headerData, setHeaderData] = useState([]);
@@ -30,9 +32,23 @@ const HeaderInfos = () => {
       </ul>
       <ul className="infos-mkt">
         <li className="global-mkt">
-          Global Market Cap : <strong></strong>
+          Global Market Cap :
+          <PercentChange
+            percent={headerData.market_cap_change_percentage_24h_usd}
+          />
+        </li>
+        <li>
+          BTC dominance :{" "}
+          {headerData.market_cap_percentage &&
+            headerData.market_cap_percentage.btc.toFixed(1) + "%"}
+        </li>
+        <li>
+          ETH dominance :{" "}
+          {headerData.market_cap_percentage &&
+            headerData.market_cap_percentage.eth.toFixed(1) + "%"}
         </li>
       </ul>
+      <TableFilters />
     </div>
   );
 };
