@@ -41,15 +41,17 @@ const GlobalChart = ({ coinsData }) => {
 
     if (coinsData.length > 0) {
       for (let i = 0; i < 45; i++) {
-        chartData.push({
-          name:
-            coinsData[i].symbol.toUpperCase() +
-            " " +
-            coinsData[i].market_cap_change_percentage_24h.toFixed(1) +
-            "%",
-          size: coinsData[i].market_cap,
-          fill: colorPicker(coinsData[i].price_change_percentage_24h),
-        });
+        if (excludeCoin(coinsData[i].symbol)) {
+          chartData.push({
+            name:
+              coinsData[i].symbol.toUpperCase() +
+              " " +
+              coinsData[i].market_cap_change_percentage_24h.toFixed(1) +
+              "%",
+            size: coinsData[i].market_cap,
+            fill: colorPicker(coinsData[i].price_change_percentage_24h),
+          });
+        }
       }
     }
     setDataArray(chartData);
