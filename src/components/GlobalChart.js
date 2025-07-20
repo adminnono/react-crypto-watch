@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Tooltip, Treemap } from "recharts";
+import { Treemap, Tooltip } from "recharts";
 import colors from "../styles/_settings.scss";
 
 const GlobalChart = ({ coinsData }) => {
@@ -57,7 +57,7 @@ const GlobalChart = ({ coinsData }) => {
     setDataArray(chartData);
   }, [coinsData]);
 
-  const tremapToolTip = ({ active, payload }) => {
+  const TreemapTooltip = ({ active, payload }) => {
     if (active && payload && payload.length) {
       return (
         <div className="custom-tooltip">
@@ -75,11 +75,11 @@ const GlobalChart = ({ coinsData }) => {
         height={181}
         data={dataArray}
         dataKey="size"
-        stroke="rgb(51,51,51)"
+        stroke="rgb(51, 51, 51)"
         fill="black"
         aspectRatio="1"
       >
-        <Tooltip content={tremapToolTip} />
+        <Tooltip content={<TreemapTooltip />} />
       </Treemap>
     </div>
   );

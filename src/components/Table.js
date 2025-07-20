@@ -3,8 +3,8 @@ import TableLine from "./TableLine";
 import ToTop from "./ToTop";
 
 const Table = ({ coinsData }) => {
-  const [rangeNumber, setRangeNumber] = useState(100);
   const [orderBy, setOrderBy] = useState("");
+  const [rangeNumber, setRangeNumber] = useState(100);
 
   const tableHeader = [
     "Prix",
@@ -15,7 +15,7 @@ const Table = ({ coinsData }) => {
     "1s",
     "1m",
     "6m",
-    "1a",
+    "1y",
     "ATH",
   ];
 
@@ -43,11 +43,8 @@ const Table = ({ coinsData }) => {
         {tableHeader.map((el) => (
           <li key={el}>
             <input
-              type="radio"
-              name="header-el"
-              id={el}
               defaultChecked={
-                el === orderBy || orderBy + "reverse" ? true : false
+                el === orderBy || el === orderBy + "reverse" ? true : false
               }
               onClick={() => {
                 if (orderBy === el) {
@@ -56,6 +53,9 @@ const Table = ({ coinsData }) => {
                   setOrderBy(el);
                 }
               }}
+              type="radio"
+              name="header-el"
+              id={el}
             />
             <label htmlFor={el}>{el}</label>
           </li>
@@ -145,11 +145,11 @@ const Table = ({ coinsData }) => {
               case "ATHreverse":
                 return a.ath_change_percentage - b.ath_change_percentage;
               default:
-                break;
+                null;
             }
           })
           .map((coin, index) => (
-            <TableLine coin={coin} index={index} key={index} />
+            <TableLine coin={coin} key={coin.id} index={index} />
           ))}
     </div>
   );

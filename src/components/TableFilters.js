@@ -13,7 +13,7 @@ const TableFilters = () => {
         </div>
         <div className="fav-list">
           <p>Liste des favoris</p>
-          <img src="./assets/star-full.svg" alt="icon star" />
+          <img src="./assets/star-full.svg" alt="icon-star" />
         </div>
       </div>
     </div>
