@@ -1,7 +1,7 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import TableLine from "./TableLine";
 import ToTop from "./ToTop";
-import { useSelector } from "react-redux";
 import { isStableCoin } from "./Utils";
 
 const Table = ({ coinsData }) => {
